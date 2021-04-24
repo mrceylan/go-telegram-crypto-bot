@@ -52,6 +52,8 @@ type price struct {
 
 var cac *cache.Cache
 
+var botWrongCommandMessage string = "You have entered wrong commmand. Please enter command like BTC-USD."
+
 func main() {
 	cac = cache.New(30*time.Second, 10*time.Minute)
 
@@ -89,14 +91,14 @@ func listenCommands(updates tgbotapi.UpdatesChannel, bot *tgbotapi.BotAPI) {
 		msg := tgbotapi.NewMessage(update.Message.Chat.ID, "")
 
 		if len(command) != 2 {
-			msg.Text = "You have entered wrong commmand"
+			msg.Text = botWrongCommandMessage
 			bot.Send(msg)
 			continue
 		}
 
 		result, err := getData(command[0], command[1])
 		if err != nil {
-			msg.Text = "You have entered wrong commmand"
+			msg.Text = botWrongCommandMessage
 			bot.Send(msg)
 			continue
 		}
