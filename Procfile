@@ -1,1 +1,1 @@
-web: main
+web: go-telegram-crypto-bot
