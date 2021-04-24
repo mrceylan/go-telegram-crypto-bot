@@ -1,1 +1,1 @@
-web: go-telegram-crypto-bot
+worker: go-telegram-crypto-bot
